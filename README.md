@@ -9,5 +9,6 @@
          - Remover elementos
          - Modificar elementos
          - Uniao
-         - Interseccao
+         - Intersecção
+         - Diferença
          - Imprimir Conjunto
