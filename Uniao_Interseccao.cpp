@@ -284,15 +284,18 @@ public:
         }
     }
     void Diferenca(Conjunto B)
-    {
+    {   
+        
+        
         if (getQtdElementos() == 0 || B.getQtdElementos() == 0)
         {
             printf("\nNao é possivel realizar a diferenca de conjuntos vazios!\n");
         }
         else
         {
-            int tamanho;
-
+            
+            
+            int indice = 0, valores_repetidos = 0, tamanho  = 0;
             if (getQtdElementos() > B.getQtdElementos())
             {
                 tamanho = getQtdElementos();
@@ -301,26 +304,34 @@ public:
             {
                 tamanho = B.getQtdElementos();
             }
+
             Conjunto C(tamanho);
 
-            printf("\nTamanho do conjunto: %d", C.getQtdElementos());
-            printf("\nTamanho da lista de elementos: %d\n", sizeof(C.Elementos));
-            int indice = 0;
-
+            //Diferença de conjuntos
+            
             for (int i = 0; i < getQtdElementos(); i++)
-            {
+            {   
+                valores_repetidos = 0;
                 for (int j = 0; j < B.getQtdElementos(); j++)
                 {
-                    if (Elementos[i] != B.Elementos[j])
+                    //printf("%d <==> %d  | %d |\n", Elementos[i], B.Elementos[j], i);
+                    if (Elementos[i] == B.Elementos[j]) // Percorre o vetor B.Elementos e verifica se o elemento do vetor não se repete
                     {
-                        C.Elementos[indice] = Elementos[i];
-                        printf("\nElemento %d inserido no vetor C.Elementos\n", C.Elementos[indice]);
-                        indice++;
+                        valores_repetidos++;
+                        break;
                     }
                 }
+
+                if (valores_repetidos == 0) // Se o elemento não se repetir, ele é inserido no vetor C.Elementos, pois ele não pertence ao conjunto B
+                {
+                    printf("\nElemento %d inserido no vetor C.Elementos\n", Elementos[i]);
+                    C.Elementos[indice] = Elementos[i];
+                    indice++;
+                    valores_repetidos++;
+                }
+                
             }
 
-            printf("\nDiferenca realizada com sucesso!\n");
             C.setQtdElementos(indice);
             C.MostraElementos();
         }
