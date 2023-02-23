@@ -4,7 +4,6 @@
 using std::cin;
 using std::cout;
 using std::endl;
-#include <vector>
 
 class Conjunto
 {
@@ -14,7 +13,7 @@ private:
     void create_Elementos(int qtd)
     {
         Elementos = (int *)malloc(sizeof(int) * qtd);
-        printf("Funcao create_Elementos executada!\n");
+        //printf("Funcao create_Elementos executada!\n");
     }
 
 public:
@@ -27,7 +26,7 @@ public:
     Conjunto(int QtdElementos)
     {
         setQtdElementos(QtdElementos);
-        printf("\nConjunto criado com  espaço para %d elementos!\n", getQtdElementos());
+        printf("\nConjunto criado com  espaco para %d elementos!\n", getQtdElementos());
         create_Elementos(getQtdElementos());
     }
     ~Conjunto()
@@ -45,6 +44,8 @@ public:
     void setQtdElementos(int n)
     {
         QtdElementos = n;
+        Elementos = (int *)realloc(Elementos, sizeof(int) * QtdElementos);
+        //printf("Funcao setQtdElementos - Atualizacao!\n");
     }
 
     // Metodos dos conjuntos
@@ -52,7 +53,7 @@ public:
     {
         if (getQtdElementos() == 0)
         {
-            printf("\nNão é possivel mostrar um grupo vazio!\n");
+            printf("\nNao e possivel mostrar um grupo vazio!\n");
             return;
         }
         else
@@ -80,7 +81,7 @@ public:
     {
         if (getQtdElementos() == 0) // Se a quantidade de elementos for igual a 0, não é possivel remover !
         {
-            printf("\nNão é possivel remover um grupo vazio!\n");
+            printf("\nNao e possivel remover um grupo vazio!\n");
         }
         else
         {
@@ -122,7 +123,7 @@ public:
     {
         if (getQtdElementos() == 0) // Se a quantidade de elementos for igual a 0, não é possivel modificar !
         {
-            printf("\nNão é possivel modificar um grupo vazio!\n");
+            printf("\nNao e possivel modificar um grupo vazio!\n");
             return;
         }
         else
@@ -140,10 +141,13 @@ public:
                     printf("\nElemento modificado com sucesso!\n");
                     break;
                 }
-                else
+
+                if (i == getQtdElementos() - 1)
                 {
-                    printf("\nElemento não encontrado!\n");
+                    printf("\nElemento nao encontrado!\n");
                 }
+
+                printf("\n...\n");
             }
         }
     }
@@ -170,7 +174,7 @@ public:
 
         if (getQtdElementos() == 0 && B.getQtdElementos() == 0) // Se os dois conjuntos forem vazios, a união é vazia
         {
-            printf("\nNão é possivel realizar a união de conjuntos vazios!\n");
+            printf("\nNao e possivel realizar a uniao de conjuntos vazios!\n");
             printf("\nVAZIO + VAZIO = VAZIO\n");
         }
         else
@@ -237,7 +241,7 @@ public:
                 redimensionado = C.getQtdElementos() - valores_repetidos;
                 C.setQtdElementos(redimensionado);
             }
-            printf("\nUnião realizada com sucesso!\n");
+            printf("\nUniao realizada com sucesso!\n");
             C.MostraElementos();
         }
     }
@@ -245,7 +249,7 @@ public:
     {
         if (getQtdElementos() == 0 || B.getQtdElementos() == 0)
         {
-            printf("\nNao é possivel realizar a intersecao de conjuntos vazios!\n");
+            printf("\nNao e possivel realizar a intersecao de conjuntos vazios!\n");
         }
         else
         {
@@ -278,24 +282,22 @@ public:
                 }
             }
 
-            printf("\nInterseção realizada com sucesso!\n");
+            printf("\nInterseccao realizada com sucesso!\n");
             C.setQtdElementos(indice);
             C.MostraElementos();
         }
     }
     void Diferenca(Conjunto B)
-    {   
-        
-        
+    {
+
         if (getQtdElementos() == 0 || B.getQtdElementos() == 0)
         {
             printf("\nNao é possivel realizar a diferenca de conjuntos vazios!\n");
         }
         else
         {
-            
-            
-            int indice = 0, valores_repetidos = 0, tamanho  = 0;
+
+            int indice = 0, valores_repetidos = 0, tamanho = 0;
             if (getQtdElementos() > B.getQtdElementos())
             {
                 tamanho = getQtdElementos();
@@ -307,14 +309,14 @@ public:
 
             Conjunto C(tamanho);
 
-            //Diferença de conjuntos
-            
+            // Diferença de conjuntos
+
             for (int i = 0; i < getQtdElementos(); i++)
-            {   
+            {
                 valores_repetidos = 0;
                 for (int j = 0; j < B.getQtdElementos(); j++)
                 {
-                    //printf("%d <==> %d  | %d |\n", Elementos[i], B.Elementos[j], i);
+                    // printf("%d <==> %d  | %d |\n", Elementos[i], B.Elementos[j], i);
                     if (Elementos[i] == B.Elementos[j]) // Percorre o vetor B.Elementos e verifica se o elemento do vetor não se repete
                     {
                         valores_repetidos++;
@@ -329,7 +331,6 @@ public:
                     indice++;
                     valores_repetidos++;
                 }
-                
             }
 
             C.setQtdElementos(indice);
@@ -350,7 +351,7 @@ int main()
 void Menu()
 {
 
-    int opcao, qtdConjuntos, qtdElementos, grupo, Conjunto1, Conjunto2;
+    int opcao, qtdConjuntos, qtdElementos, grupo, Conjunto1, Conjunto2; // Variaveis para o menu
     opcao = -1;
 
     printf("\nDigite a quantidade de conjuntos que deseja criar: ");
@@ -411,6 +412,9 @@ void Menu()
 
         case 3:
 
+            printf("\nDigite o grupo que deseja modificar o elemento: ");
+            cin >> grupo;
+
             if (grupo > qtdConjuntos || grupo < 1)
             {
                 printf("\nGrupo invalido!\n");
@@ -418,8 +422,7 @@ void Menu()
             }
             else
             {
-                printf("\nDigite o grupo que deseja modificar o elemento: ");
-                cin >> grupo;
+
                 conjuntos[grupo - 1].ModificaElementos();
                 break;
             }
@@ -431,7 +434,7 @@ void Menu()
             printf("\nDigite o segundo grupo: ");
             cin >> Conjunto2;
 
-            if ((Conjunto1 > qtdConjuntos) or (Conjunto2 > qtdConjuntos))
+            if ((Conjunto1 > qtdConjuntos) || (Conjunto2 > qtdConjuntos))
             {
                 printf("\nGrupo invalido!\n");
                 break;
