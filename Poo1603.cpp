@@ -198,7 +198,8 @@ public :
         return numPneus;
     }
 
-
+    // fazer gets e sets para devolver motor freio e numPneus
+    //Ou um print info pra cada classe que e chamado no print info de carro
 
 
 
@@ -217,7 +218,7 @@ int  main(){
     cout<<"deletando carro 2"<<endl;
 
 
-/* //Não funciona
+/*Não funciona ´pq tem que fazer osd gets e sets ou função print info
 
 //mostrando informaçõesdo carro 2
 
@@ -236,10 +237,9 @@ int  main(){
     cout << "numPneus: " << c2->numPneus << endl;
 
 
-
-
-
 */
+
+                                                                              
     
     
     
