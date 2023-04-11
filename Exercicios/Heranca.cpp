@@ -1,132 +1,158 @@
-#include<iostream>
+#include <iostream>
+#include <string>
+
+
+// Tema carbon owl
 
 using std::cout;
+using std::cin;
 using std::endl;
+using std::string;
 
 
-class Animal
-{
-    int idade;
+/*
 
-public:
-    Animal(int i)
-    {
-        cout<<"Construtor de Animal"<<endl;
-        set_idade(i);
-        
+    //Referencias : 
+    
+    https://pt.stackoverflow.com/questions/25619/composi%C3%A7%C3%A3o-e-agrega%C3%A7%C3%A3o-quais-as-diferen%C3%A7as-e-como-usar    
+    https://www.inf.unioeste.br/~adair/ED/Apostilas/Introducao%20POO%20C++.pdf
+    http://www.linhadecodigo.com.br/artigo/943/uml-unified-modeling-language-generalizacao-agregacao-composicao-e-dependencia.aspx
+
+
+    //Herança =  tipo de 
+    //composição = todo/parte
+        * Agregação 
+        * composição 
+        * Associação
+    
+
+    
+
+    capitulo  -  Livro   (parte de)
+    professor - grupo de pesquisa (parte de)
+    orientação - orientação de doutorado (tipo de)
+
+
+    
+
+*/
+
+
+class Tesoura{
+    float tamanhoLamina;
+    bool afiada;
+public :
+    Tesoura(float tamanhoLamina, bool afiada){
+        setTamanhoLamina(tamanhoLamina);
+        setAfiada(afiada);
+        cout<<"Construtor da classe Tesoura"<<endl;
     }
-    ~Animal()
-    {
-        cout<<"Destrutor de Animal"<<endl;
+    ~Tesoura(){
+        cout<<"Destrutor da classe Tesoura"<<endl;
     }
-   
-    void set_idade(int i)
-    {
-        idade = i;
+
+    //gets e sets
+
+    float getTamanhoLamina(){
+        return tamanhoLamina;
     }
-    int get_idade()
-    {
-        return idade;
+    void setTamanhoLamina(float tamanhoLamina){
+        this->tamanhoLamina = tamanhoLamina;
     }
-    void respirar()
-    {
-        cout<<"Respirando"<<endl;
+    bool getAfiada(){
+        return afiada;
+    }    
+    void setAfiada(bool afiada){
+        this->afiada = afiada;
     }
-    int envelhecer()
-    {
-        idade++;
-        return idade;
+
+    //metodos
+    void afiar(){
+        cout<<"Afiando a tesoura..."<<endl;
+        setAfiada(true);
+    }
+    void cortar(){
+        cout<<"Cortando..."<<endl;
+    }
+    void guardar(){
+        cout<<"Guardando a tesoura..."<<endl;
     }
 };
 
-class Ave : public Animal
-{  
-    bool voa;
+class ChaveFenda{
+    float tamanhoFenda;
 
-public:
-    Ave(int i, bool v) : Animal(i)
-    {
-        cout<<"Construtor de Ave"<<endl;
-        set_voa(v);
+public :
+    ChaveFenda(float tamanhoFenda){
+        setTamanhoFenda(tamanhoFenda);
+        cout<<"Construtor da classe ChaveFenda"<<endl;
+    }
+    ~ChaveFenda(){
+        cout<<"Destrutor da classe ChaveFenda"<<endl;
+    }
 
+    //gets e sets
+
+    float getTamanhoFenda(){
+        return tamanhoFenda;
     }
-    ~Ave()
-    {
-        cout<<"Destrutor de Ave"<<endl;
+    void setTamanhoFenda(float tamanhoFenda){
+        this->tamanhoFenda = tamanhoFenda;
     }
-    void set_voa(bool v)
-    {
-        voa = v;
+
+    //metodos
+    void apertarParafuso(){
+        cout<<"Apertando parafuso..."<<endl;
     }
-    bool get_voa()
-    {
-        return voa;
-    }
-    void bicar()
-    {
-        cout<<"Bicando"<<endl;
-    }
-    void nidificar()
-    {
-        cout<<"Nidificando"<<endl;
+    void guardar(){
+        cout<<"Guardando a chave de fenda..."<<endl;
     }
 };
 
-class Mamifero : public Animal
-{
-    bool pelo;
-
+class Canivete : public Tesoura, public ChaveFenda{
+    int anoFabricacao;
 public:
-
-    Mamifero(int i, bool p) : Animal(i)
-    {
-        cout<<"Construtor de Mamifero"<<endl;
-        set_pelo(p);
+    Canivete(float tamanhoLamina, bool afiada, float tamanhoFenda, int anoFabricacao): Tesoura(tamanhoLamina, afiada), ChaveFenda(tamanhoFenda){
+        setAnoFabricacao(anoFabricacao);
+        cout<<"Construtor da classe Canivete"<<endl;
     }
-    ~Mamifero()
-    {
-        cout<<"Destrutor de Mamifero"<<endl;
-    }
-    void set_pelo(bool p)
-    {
-        pelo = p;
-    }
-    bool get_pelo()
-    {
-        return pelo;
+    ~Canivete(){
+        cout<<"Destrutor da classe Canivete"<<endl;
     }
 
-    void mamar()
-    {
-        cout<<"Mamando"<<endl;
+    //gets e sets
+
+    int getAnoFabricacao(){
+        return anoFabricacao;
+    }
+    void setAnoFabricacao(int anoFabricacao){
+        this->anoFabricacao = anoFabricacao;
     }
 
+    //metodos
 
-};
+    void abrirLata(){
+        cout<<"Barulho de lata abrindo... "<<endl;
+    }
+    void guardar(){
+        cout<<"Guardando o canivete..."<<endl;
+    }
+
+}; // Herança múltipla
 
 
-int main()
-{
-    Ave a(2, true);
-    Mamifero m(4, true);
+int main(){
+    Canivete canivete(10, true, 5, 2019);
+    canivete.afiar();
+    canivete.cortar();
+    canivete.apertarParafuso();
+    canivete.abrirLata();
 
-    cout<<"Idade: "<< a.get_idade()<<endl;
-    cout<<"Voa: "<< a.get_voa()<<endl;
-    cout<<endl;
-    cout<<"Idade: "<< m.get_idade()<<endl;
-    cout<<"Pelo: "<< m.get_pelo()<<endl;
-    cout<<endl;
-    a.bicar();
-    a.respirar();   
-    m.mamar();
-    m.respirar();
-    cout<<endl;
-    a.envelhecer();
-    m.envelhecer();
-    cout<<endl;
-    cout<<"Idade: "<< a.get_idade()<<endl;
-    cout<<"Idade: "<< m.get_idade()<<endl;
-    cout<<endl;
+    canivete.Tesoura::guardar();
+    canivete.ChaveFenda::guardar();
+    canivete.guardar();
+
+    
 
     return 0;
 }
