@@ -1,14 +1,4 @@
-# Project_C--
-# Repositório com códigos na linguagem C e em suas derivações mais diretas
+# Programação Orientada a Objetos (POO)
+# Repositório com códigos na linguagem C e c++
 
-# Operações com Conjuntos 
-
-## Funcionalidades :
-
-         - Inserir elementos 
-         - Remover elementos
-         - Modificar elementos
-         - Uniao
-         - Intersecção
-         - Diferença
-         - Imprimir Conjunto
+### Redirecionamento do repositório acadêmico de POO
