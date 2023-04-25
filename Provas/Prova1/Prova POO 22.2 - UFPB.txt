@@ -1,0 +1,47 @@
+Primeira Prova – Programação Orientada a Objetos – UFPB – 2022.2
+Professor: Carlos Eduardo Batista
+
+**************** ATENÇÃO!!!!!! LEIA TODAS AS INSTRUÇÕES!!!!!! ****************
+
+- A nota máxima é 10,00 
+
+- As respostas da prova devem ser enviadas por e-mail (para bidu @ ci.ufpb.br)
+ em um ÚNICO arquivo ZIP contendo os códigos solicitados em arquivos separados
+ dentro do ZIP. 
+
+- O TÍTULO do e-mail E do ARQUIVO ZIP DEVERÁ conter "[PROVA02-POO-222]", 
+ seu nome e matrícula. ATENÇÃO: NO *TITULO DO E-MAIL E ARQUIVO ZIP*.
+
+- TODO CÓDIGO *DEVE* ser comentado com a explicação da lógica e demais 
+ informações solicitadas na questão. 
+
+- Cada questão deve ser respondida em um arquivo separado.
+
+- Plágio será punido com a perda da pontuação das respostas por todos os
+ participantes.
+
+- O envio deverá ser feito até as 11h55 do dia 25/04/2023
+
+**************** ATENÇÃO!!!!!! LEIA TODAS AS INSTRUÇÕES!!!!!! ****************
+
+(Questão 1 - 7 pontos)
+Considere uma classe Conta que possui os atributos numero, saldo e titular. Crie um método construtor para inicializar esses atributos. Além disso, crie dois métodos: depositar e sacar, que recebem como parâmetro um valor e atualizam o saldo da conta de acordo.
+
+Agora, crie duas classes: ContaCorrente e ContaPoupanca, utilizando adequadamente a relação com a classe Conta. A classe ContaCorrente possui um atributo adicional chamado limite, enquanto a classe ContaPoupanca possui um atributo adicional chamado rendimento. Crie métodos construtores para inicializar esses atributos. Além disso, sobrescreva o método sacar na classe ContaCorrente acrescentando uma mensagem.
+
+Finalmente, crie uma classe Banco que possui um vetor de ponteiros para objetos do tipo Conta. Crie um método chamado adicionarConta que recebe como parâmetro um objeto do tipo Conta e o adiciona ao vetor. Além disso, crie um método chamado listarContas que imprime na tela as informações de todas as contas no banco. Crie o método construtor e destrutor da classe Banco adequadamente.
+
+Faça um programa que cria um objeto do tipo Banco e adiciona a ele duas contas: uma do tipo ContaCorrente e outra do tipo ContaPoupanca. Em seguida, o programa lista as informações das contas e realiza algumas operações de saque e depósito (pelo menos uma de cada em cada conta). Finalmente, o programa lista novamente as informações das contas para mostrar o resultado das operações. Discorra sobre as mensagens exibidas (qual método foi chamado em qual situação).
+
+---------------------------------------
+
+(Questão 2 - 7 pontos)
+Considere uma classe Pessoa que possui os atributos nome, idade e cpf. Crie um método construtor para inicializar esses atributos.
+
+Agora, crie duas classes: Instrutor e Aluno, ambas com a relação adequada com a classe Pessoa. A classe Instrutor possui um atributo adicional chamado salario, enquanto a classe Aluno possui um atributo adicional chamado mensalidade. Crie métodos construtores para inicializar esses atributos.
+
+Em seguida, crie uma classe Aula que possui os atributos nome, horario, duracao e um objeto do tipo Instrutor. Crie um método construtor para inicializar esses atributos. Além disso, crie um método chamado adicionarAluno que recebe como parâmetro um objeto do tipo Aluno e o adiciona a uma lista de alunos da aula.
+
+Finalmente, crie uma classe Academia que possui um vetor de objetos do tipo Aula. Crie um método chamado adicionarAula que recebe como parâmetro um objeto do tipo Aula e o adiciona ao vetor. Além disso, crie um método chamado listarAulas que imprime na tela as informações de todas as aulas na academia. Crie o método construtor e destrutor da classe Academia adequadamente.
+
+Faça um programa que cria objetos do tipo Instrutor, Aluno, Aula e Academia. Em seguida, o programa adiciona alunos à aula e adiciona a aula à academia. Finalmente, o programa lista as informações das aulas na academia.
