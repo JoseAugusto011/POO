@@ -205,7 +205,7 @@ class Turma {
 
 private:
     Professor professor;
-    Aluno *alunos;
+    Aluno *alunos; //Criar ponteiro para ponteiro Aluno **alunos e receber quantidade de alunos no construtor  //Também poderia receber array de alunos
     int codigoDisciplina;
     static Turma* instancia;
 
@@ -216,7 +216,7 @@ private:
     }
   public:
 
-    static Turma* getInstancia(Professor p, Aluno *a, int cd) {
+    static Turma* getInstancia(Professor p, Aluno *a, int cd) { //alterar código para que get instance não receba nada, e Turma seja construtor padrão e altere os valores com os sets
       if (instancia == NULL) {
         instancia = new Turma(p, a, cd);
       }
