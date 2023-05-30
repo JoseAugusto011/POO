@@ -3,3 +3,6 @@ Links úteis:
 
 https://refactoring.guru/pt-br
 https://www.rust-lang.org/pt-BR/learn
+
+
+https://www.youtube.com/watch?v=-zQaMDIJ9Jo
